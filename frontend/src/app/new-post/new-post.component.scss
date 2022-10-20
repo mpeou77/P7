@@ -1,0 +1,91 @@
+$bordure-color : #FD2D01;
+$tertiary-color: #564643;
+  h2 {
+    text-align: center;
+    font-size: 30px;
+    margin-top: 50px;
+  }
+
+form {
+    display: flex;
+    width: 50%;
+    flex-direction: column;
+    margin: auto;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    
+}
+
+input,button, textarea {
+    margin-top:  8px;
+    margin-bottom: 8px;
+    border: none;
+    border-radius: 7px;
+    padding: 3px;
+    background-color: white;
+    box-shadow: 4px 4px 4px $bordure-color;
+}
+
+
+button {
+    width: 20%;
+    background: linear-gradient(grey, $tertiary-color );
+    border-radius: 15px;
+    color: white;
+    cursor: pointer;
+    margin: auto;
+    margin-top: 45px;
+}
+
+button:hover {
+  background: white;
+  color: black;
+}
+
+nav {
+  display: flex;
+  align-items: center;
+  margin-left: 2%;
+}
+
+
+label {
+  margin-top: 15px;
+  margin-bottom: 5px;
+}
+
+
+@media screen and (max-width: 768px) {
+
+  .form-card{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  * {
+    font-size: 13px;
+  }
+ form {
+  width: 90%;
+ } 
+
+ .allPost {
+  width: 100%;
+ }
+
+  button {
+    width: 40%;
+    margin: auto;
+    margin-top: 20px;
+  }
+  
+  h2 {
+    font-size: 25px;
+  }
+}
+
+@media screen and (max-width: 991px) {
+  button {
+    width: 40%;
+  }
+}

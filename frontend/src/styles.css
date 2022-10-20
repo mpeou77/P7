@@ -1,0 +1,27 @@
+* {
+  font-family: Lato, Helvetica, sans-serif;
+  font-size: 17px;
+}
+
+body {
+  padding: 0px;
+  margin: 0px;
+  background-color: #ffd7d7;
+}
+
+.post-card {
+  padding: 1%;
+  margin: auto;
+  margin-top: 30px;
+  box-shadow: 4px 4px 4px #FD2D01;
+  background: linear-gradient(white, #4E5166);
+  width: 30%;
+  border-radius: 7px;
+  margin-bottom: 30px;
+}
+
+img {
+  width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}/*# sourceMappingURL=styles.css.map */

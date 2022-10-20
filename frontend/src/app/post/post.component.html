@@ -1,0 +1,19 @@
+<div >
+  <div class="post-card"  >
+    <h2>{{ post.lastname | uppercase }} {{ post.firstname }}</h2>
+    <p>Mis en ligne le : {{ post.createDate | date: "medium" }}</p>
+    <p class="feeling">{{ post.feeling }}</p>
+    <div class="imagePost"><img [src]="post.imageUrl" alt="image-post" /></div>
+    <div class="likeAndModify">
+      <p>
+        <button [ngStyle]="{'background-color': onGetPostLikes()  ? '#04F12B': '#E2DDE0'} "  (click)="onLikes(post._id )"> Likes </button>
+        👍 {{ post.likes }};
+      </p>
+      <p>
+        <button *ngIf="onModifyButton()" (click)="onClickPost(post._id)">
+          Modifier
+        </button>
+      </p>
+    </div>
+  </div>
+</div>

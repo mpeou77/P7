@@ -1,0 +1,29 @@
+<header>
+  <h1 class="logo">
+    <img src="../../assets/images/icon-left-font-modification.png" alt="groupomania logo" />
+  </h1>
+  <nav>
+    <a
+      *ngIf="!(isAuth$ | async)"
+      routerLink="/signup"
+      routerLinkActive="active"
+      [routerLinkActiveOptions]="{ exact: true }"
+      >Inscription</a
+    >
+    <a
+      *ngIf="!(isAuth$ | async)"
+      routerLink="/login"
+      routerLinkActive="active"
+      [routerLinkActiveOptions]="{ exact: true }"
+      >Connexion</a
+    >
+    <a
+      *ngIf="isAuth$ | async"
+      routerLink=""
+      routerLinkActive="active"
+      [routerLinkActiveOptions]="{ exact: true }"
+      (click)="onLogout()"
+      >Déconnexion</a
+    >
+  </nav>
+</header>

@@ -1,0 +1,40 @@
+.control-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin: 15px;
+}
+
+button {
+  background-color: #ffd7d7;
+  color: black;
+  border-radius: 7px;
+  border-color: white;
+  box-shadow: 4px 4px 4px #FD2D01;
+  cursor: pointer;
+}
+button:hover {
+  transform: scale3d(1.1, 1.1, 1.1);
+}
+
+@media screen and (max-width: 992px) {
+  .post-card {
+    margin-top: 100px;
+    width: 60%;
+    padding: 7px;
+  }
+}
+@media screen and (max-width: 768px) {
+  .post-card {
+    width: 90%;
+    padding: 10px;
+  }
+  .control-buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  button {
+    margin: 5px;
+    width: 40%;
+  }
+}/*# sourceMappingURL=single-post.component.css.map */
