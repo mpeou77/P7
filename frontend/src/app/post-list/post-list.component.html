@@ -1,7 +1,6 @@
 <nav>
-  <button (click)="onAddNewPost()">
-    Ajouter un post
-  </button>
+  <button (click)="onAddNewPost()">Ajouter un post</button>
 </nav>
-<app-post  *ngFor="let post of posts.reverse()" [post]="post" ></app-post>
-
+<div *ngIf="posts != undefined && posts.length > 0">
+  <app-post *ngFor="let post of posts.reverse()" [post]="post"></app-post>
+</div>

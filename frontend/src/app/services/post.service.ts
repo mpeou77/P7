@@ -69,8 +69,8 @@ export class PostService {
     console.log('mercredi');
       return this.http
         .put<Post>(
-          `http://localhost:3000/api/posts/ ${ postId }/like`,
-          { userId: this.auth.getUserId() , likes: likeType  ? 0 : 1 }
+          `http://localhost:3000/api/posts/${ postId }/like`,
+          { userId: this.auth.getUserId() , likes: likeType }
         )
         .pipe(catchError((error) => throwError(error.error.message)));
     

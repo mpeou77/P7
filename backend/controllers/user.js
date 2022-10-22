@@ -11,7 +11,7 @@ exports.signup = (req, res, next) => {
         password: hash,
         lastname: req.body.lastname,
         firstname: req.body.firstname,
-        admin: false
+        admin: false,
       });
       user
         .save()
@@ -40,9 +40,13 @@ exports.login = (req, res, next) => {
               res.status(200).json({
                 userId: user._id,
                 admin: user.admin,
-                token: jwt.sign({ userId: user._id, admin: user.admin }, "RANDOM_TOKEN_SECRET", {
-                  expiresIn: "24h",
-                }),
+                token: jwt.sign(
+                  { userId: user._id, admin: user.admin },
+                  "RANDOM_TOKEN_SECRET",
+                  {
+                    expiresIn: "24h",
+                  }
+                ),
               });
             }
           })

@@ -49,22 +49,12 @@ export class PostComponent implements OnInit {
   onLikes(postId: string): void {
     const userId = localStorage.getItem('userId');
     const userLike = this.post.usersLiked.includes(userId!);
-    /*  console.log('lundi');
     console.log(userId);
-    console.log(this.post.likes);
-    console.log('dimanche');
-    console.log(777);
-     console.log(this.onGetPostLikes()); */
-    
-      this.postService.postLikebyId(this.post._id, userLike).pipe(
-        tap(() => {
-          //this.post$ = this.postService.getPostById(postId); 
-          if (this.onGetPostLikes()) {
-            console.log('pantalon');
-            this.post.likes--;
-          } else {
-            this.post.likes++;
-          }
+    console.log(userLike);
+      this.postService.postLikebyId(postId, !userLike).pipe(
+        tap((post) => {
+          console.log(post);
+          this.post = post;
         })
       ).subscribe();  
     }   

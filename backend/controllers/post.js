@@ -136,18 +136,26 @@ exports.DislikeOrLike = (req, res, next) => {
   Post.findOne({ id: req.params.id })
     .then((post) => {
       // cas où l'utilisateur aime le post, il incrémente les likes
-      console.log('monday');
-      if (req.body.likes === 1 && !post.usersLiked.includes(req.auth.userId)) {
+      console.log(req.body.likes);
+      
+      let listeUsersLike = post.usersLiked;
+      if (req.body.likes ) {
+console.log(req.body.userId);
+console.log(post.usersLiked);
+        if (!post.usersLiked.includes(req.body.userId)){ 
         console.log('tataattatattatata');
+        listeUsersLike.push(req.body.userId);
         Post
           .updateOne(
             { id: req.params.id },
-            { $inc: { likes: 1 }, $push: { usersLiked: req.auth.userId } }
+            { likes: listeUsersLike.length ,  usersLiked: listeUsersLike }
           )
-          .then(() => res.status(201).json({ message: "like incrémenté" }))
+          .then(() =>{
+            Post.findOne({ id: req.params.id })
+            .then((response) => res.status(201).json(response));
+          }) 
           .catch((error) => res.status(400).json(error));
-          console.log('tuesday');
-
+          }
       } else {
         console.log('samedi');
         Post
@@ -155,9 +163,13 @@ exports.DislikeOrLike = (req, res, next) => {
             { id: req.params.id },
             { $inc: { likes: -1 }, $pull: { usersLiked: req.auth.userId } }
           )
-          .then(() => res.status(201).json({ message: "like --"}))
+          .then(() =>{
+            Post.findOne({ id: req.params.id })
+            .then((response) => res.status(201).json(response));
+          })
           .catch((error) => res.status(400).json(error));
       }
+    
     })
     .catch((error) => {
       res.status(500).json({ error });
