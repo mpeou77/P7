@@ -14,4 +14,4 @@ Démarrer dans le terminal avec la commande `ng serve`
   
   Démarrer le serveur sur http//:locahost:3000 avec `node server ou nodemon server`
   
-  Créer un fichier .env dans le dossier racine pour accéder à la base de données MongoDB avec DATABASE_CONNECTION = votre identifiant
+  Créer un fichier .env dans le dossier racine pour accéder à la base de données MongoDB avec DATABASE_CONNECTION = votre chaîne de connexion
