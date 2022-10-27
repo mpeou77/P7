@@ -1,7 +1,6 @@
 .control-buttons {
   display: flex;
   justify-content: space-between;
-  margin: 15px;
 }
 
 button {
@@ -32,6 +31,7 @@ button:hover {
     display: flex;
     flex-direction: column;
     align-items: center;
+    width: 100%;
   }
   button {
     margin: 5px;

@@ -5,6 +5,7 @@ $tertiary-color: #4E5166;
 * {
   font-family: Lato, Helvetica, sans-serif;
   font-size: 17px;
+  letter-spacing: 0.5px;
 }
 
 body {
@@ -30,4 +31,8 @@ img {
   object-fit: cover;
 }
 
-
+@media screen and (max-width: 768px) {
+  * {
+    font-size: 13px;
+  }
+}

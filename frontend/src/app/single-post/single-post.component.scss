@@ -5,11 +5,9 @@ $tertiary-color: #4E5166;
 .control-buttons {
     display: flex;
     justify-content: space-between;
-    margin: 15px;
 }
 
 button {
-    
     background-color: $secondary-color;
     color: black;;
     border-radius: 7px;
@@ -38,11 +36,11 @@ button {
         display: flex;
         flex-direction: column;
         align-items: center;
+        width: 100%;
     }
 
     button {
         margin: 5px;
-        width: 40%;
-        
+        width: 40%;    
     }
 }

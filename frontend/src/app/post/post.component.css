@@ -16,15 +16,15 @@ button {
   justify-content: space-between;
 }
 
-@media screen and (max-width: 768px) {
-  .post-card {
-    width: 90%;
-    padding: 7px;
-  }
-}
 @media screen and (max-width: 992px) {
   .post-card {
     width: 60%;
+    padding: 7px;
+  }
+}
+@media screen and (max-width: 768px) {
+  .post-card {
+    width: 90%;
     padding: 7px;
   }
 }/*# sourceMappingURL=post.component.css.map */

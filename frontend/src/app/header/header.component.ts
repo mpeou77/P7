@@ -24,7 +24,7 @@ export class HeaderComponent implements OnInit {
     this.router.navigateByUrl('/create');
   }
   onAllPost(): void {
-    this.router.navigateByUrl('/PostList')
+    this.router.navigateByUrl('/postList')
   }
   onLogout(): void {
     this.auth.logout();

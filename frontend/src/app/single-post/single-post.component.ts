@@ -27,7 +27,7 @@ export class SinglePostComponent implements OnInit {
   }
 
   onBack() {
-    this.router.navigate(['/PostList']);
+    this.router.navigate(['/postList']);
   }
 
   onModify() {
@@ -41,7 +41,7 @@ export class SinglePostComponent implements OnInit {
       .pipe(
         switchMap((post) => this.postService.deletePost(post._id)),
         tap((message) => {
-          this.router.navigate(['/PostList']);
+          this.router.navigate(['/postList']);
         }),
         catchError((error) => {
           this.errorMessage = error.message;

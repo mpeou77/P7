@@ -12,6 +12,8 @@ import { AuthService } from 'src/app/services/auth.service';
 export class SignupComponent implements OnInit {
   signupForm!: FormGroup;
   errorMsg!: string;
+  textRegex!: RegExp;
+
   constructor(
     private formBuilder: FormBuilder,
     private auth: AuthService,
@@ -19,11 +21,12 @@ export class SignupComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.textRegex = /^[a-zA-Z\-_\s]{1,}$/;
     this.signupForm = this.formBuilder.group({
       email: [null, [Validators.required, Validators.email]],
       password: [null, Validators.required],
-      lastname: [null],
-      firstname: [null]
+      lastname: [null,[Validators.required, Validators.pattern(this.textRegex)]],
+      firstname: [null,[Validators.required, Validators.pattern(this.textRegex)]]
     });
   }
 
@@ -37,7 +40,7 @@ export class SignupComponent implements OnInit {
       .pipe(
         switchMap(() => this.auth.loginUser(email, password)),
         tap(() => {
-          this.router.navigate(['/PostList']);
+          this.router.navigate(['/postList']);
         }),
         catchError((error) => {
           this.errorMsg = error.message;

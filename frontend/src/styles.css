@@ -1,6 +1,7 @@
 * {
   font-family: Lato, Helvetica, sans-serif;
   font-size: 17px;
+  letter-spacing: 0.5px;
 }
 
 body {
@@ -24,4 +25,10 @@ img {
   width: 100%;
   -o-object-fit: cover;
      object-fit: cover;
+}
+
+@media screen and (max-width: 768px) {
+  * {
+    font-size: 13px;
+  }
 }/*# sourceMappingURL=styles.css.map */

@@ -19,6 +19,7 @@ export class LoginComponent {
               private formBuilder: FormBuilder) { }
 
   ngOnInit(): void {
+    
     this.loginForm = this.formBuilder.group({
       email: [null, [Validators.required, Validators.email]],
       password: [null, Validators.required],
@@ -32,7 +33,7 @@ export class LoginComponent {
     this.auth.loginUser(email, password).pipe(
       switchMap(() => this.auth.loginUser(email, password)),
       tap(() => {
-        this.router.navigate(['/PostList']);
+        this.router.navigate(['/postList']);
       }),
       catchError(error => {
         this.errorMsg = error.message;

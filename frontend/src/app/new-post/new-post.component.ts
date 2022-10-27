@@ -13,8 +13,6 @@ import { PostService } from '../services/post.service';
 })
 export class NewPostComponent implements OnInit {
   postForm!: FormGroup;
-  //postPreview$!: Observable<Post>;
-  //urlRegex!: RegExp;
   errorMsg!: string;
   mode!: string;
   post!: Post;
@@ -93,7 +91,7 @@ export class NewPostComponent implements OnInit {
         .createPost(feeling, imageUrl)
         .pipe(
           tap(() => {
-            this.router.navigate(['/PostList']);
+            this.router.navigate(['/postList']);
           }),
           catchError((error) => {
             this.errorMsg = error.message;
@@ -106,7 +104,7 @@ export class NewPostComponent implements OnInit {
       console.log('croyance');
       this.posts.modifyPost(this.post._id,feeling, imageUrl).pipe(
         tap(() => {
-          this.router.navigate(['/PostList']);
+          this.router.navigate(['/postList']);
           }),
           catchError((error) => {
             this.errorMsg = error.message;
@@ -118,6 +116,6 @@ export class NewPostComponent implements OnInit {
   }
 
   onAllPost(): void {
-    this.router.navigateByUrl('/PostList');
+    this.router.navigateByUrl('/postList');
   }
 }
