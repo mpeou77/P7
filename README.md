@@ -9,5 +9,7 @@ démarrer dans le terminal avec la commande `ng serve`
   ## Back-end
   framework utilisé Express, runtime Node.js et la base de données utilisées est MongoDB
   avoir générer node avec `npm install`
+  
   démarrer le serveur sur http//:locahost:3000 avec `node server ou nodemon server`
+  
   créer un fichier .env dans le dossier racine pour accéder à la base de données MongoDB avec DATABASE_CONNECTION = votre identifiant
