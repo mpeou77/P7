@@ -21,7 +21,7 @@ export class SignupComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.textRegex = /^[a-zA-Z\-_\s]{1,}$/;
+    this.textRegex = /^[a-zA-Zéè\-_\s]{1,20}$/;
     this.signupForm = this.formBuilder.group({
       email: [null, [Validators.required, Validators.email]],
       password: [null, Validators.required],

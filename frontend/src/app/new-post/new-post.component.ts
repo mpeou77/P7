@@ -70,7 +70,7 @@ export class NewPostComponent implements OnInit {
   initModifyForm(post: Post) {
     this.postForm = this.formBuilder.group({
       feeling: [post.feeling, Validators.required],
-      imageUrl: [post.imageUrl, Validators.required],
+      imageUrl: [post.imageUrl],
     });
   }
 

@@ -3,10 +3,10 @@
     <input type="email" id="email" formControlName="email">
     <label for="password">Mot de passe</label>
     <input type="password" id="password" formControlName="password">
-    <label for="nom" >Nom</label>
-    <input type="text" formControlName="lastname"> 
-    <label for="text">Prénom</label>
-    <input type="text" formControlName="firstname"> 
+    <label for="Nom" >Nom</label>
+    <input type="text" formControlName="lastname" id="Nom"> 
+    <label for="Prenom">Prénom</label>
+    <input type="text" formControlName="firstname" id="Prenom"> 
     <button type="submit" [disabled]="signupForm.invalid" (click)="onSignup()">S'inscrire</button>
   </form>
 

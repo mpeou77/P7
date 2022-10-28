@@ -46,7 +46,7 @@ export class PostService {
       const formData = new FormData();
       formData.append('feeling', post);
       console.log('touttout');
-      if(image != null) {
+      if(image != null &&   typeof image != "string") {
       formData.append('imageUrl', image);
       }
       return this.http

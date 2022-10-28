@@ -2,7 +2,7 @@
   <h2>{{ post.lastname | uppercase }} {{ post.firstname }}</h2>
   <p>Mis en ligne le : {{ post.createDate | date: "medium" }}</p>
   <p class="feeling">{{ post.feeling }}</p>
-  <div class="imagePost"><img [src]="post.imageUrl" alt="image-post" /></div>
+  <div class="imagePost"><img [src]="post.imageUrl" alt="{{post.feeling}}" /></div>
   <div class="likeAndModify">
     <p>
       <button
