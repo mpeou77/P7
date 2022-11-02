@@ -28,12 +28,15 @@ button {
   justify-content: center;
   margin-top: 30px;
   background: linear-gradient(grey, #4E5166);
-  color: white;
+}
+button:disabled {
+  background-color: white;
+  color: black;
 }
 
 button:hover {
-  background: white;
-  color: black;
+  box-shadow: 3px 3px 10px grey;
+  opacity: 0.9;
   cursor: pointer;
 }
 

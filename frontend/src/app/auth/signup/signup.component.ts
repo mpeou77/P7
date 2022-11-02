@@ -13,6 +13,7 @@ export class SignupComponent implements OnInit {
   signupForm!: FormGroup;
   errorMsg!: string;
   textRegex!: RegExp;
+  mailRegex!: RegExp;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -22,8 +23,9 @@ export class SignupComponent implements OnInit {
 
   ngOnInit(): void {
     this.textRegex = /^[a-zA-Zéè\-_\s]{1,20}$/;
+    this.mailRegex = /^[a-zA-Z0-9.!#$%&’*+=?^_`{|}~-]+@groupomania\.com*$/;
     this.signupForm = this.formBuilder.group({
-      email: [null, [Validators.required, Validators.email]],
+      email: [null, [Validators.required, Validators.pattern(this.mailRegex)]],
       password: [null, Validators.required],
       lastname: [null,[Validators.required, Validators.pattern(this.textRegex)]],
       firstname: [null,[Validators.required, Validators.pattern(this.textRegex)]]
@@ -35,6 +37,10 @@ export class SignupComponent implements OnInit {
     const password = this.signupForm.get('password')!.value;
     const lastname = this.signupForm.get('lastname')!.value;
     const firstname = this.signupForm.get('firstname')!.value;
+    
+    if (! this.mailRegex.test(email)) {
+      alert("mail de l'entreprise obligatoire, SVP!");
+    } else {
     this.auth
       .createUser(email, password, lastname, firstname)
       .pipe(
@@ -48,5 +54,6 @@ export class SignupComponent implements OnInit {
         })
       )
       .subscribe();
+    }
   }
 }

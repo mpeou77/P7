@@ -7,13 +7,14 @@ form {
   margin-top: 100px;
 }
 
-input, button {
+input,
+button {
   margin-top: 8px;
   margin-bottom: 8px;
   border: none;
   padding: 3px;
   border-radius: 8px;
-  box-shadow: 4px 4px 4px #FD2D01;
+  box-shadow: 4px 4px 4px #fd2d01;
 }
 
 button {
@@ -21,7 +22,7 @@ button {
   margin: auto;
   width: 40%;
   justify-content: center;
-  background: linear-gradient(grey, #4E5166);
+  background: linear-gradient(grey, #4e5166);
   color: white;
   margin-top: 15px;
   cursor: pointer;
@@ -32,8 +33,9 @@ button:disabled {
 }
 
 button:hover {
-  background: linear-gradient(grey, #4E5166);
-  color: white;
+  box-shadow: 3px 3px 10px grey;
+  opacity: 0.9;
+  cursor: pointer;
 }
 
 @media screen and (max-width: 768px) {

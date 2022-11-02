@@ -13,15 +13,16 @@ import { AuthService } from 'src/app/services/auth.service';
 export class LoginComponent {
   loginForm!: FormGroup;
   errorMsg!: string;
+  mailRegex!: RegExp;
   
   constructor(private auth: AuthService,
               private router: Router,
               private formBuilder: FormBuilder) { }
 
   ngOnInit(): void {
-    
+    this.mailRegex = /^[a-zA-Z0-9.!#$%&’*+=?^_`{|}~-]+@groupomania\.com*$/;
     this.loginForm = this.formBuilder.group({
-      email: [null, [Validators.required, Validators.email]],
+      email: [null, [Validators.required, Validators.pattern(this.mailRegex)]],
       password: [null, Validators.required],
       admin: [null,Validators.required]
     })
@@ -30,6 +31,9 @@ export class LoginComponent {
   onLogin() {
     const email = this.loginForm.get('email')!.value;
     const password = this.loginForm.get('password')!.value;
+    if (! this.mailRegex.test(email)) {
+      alert("mail de l'entreprise obligatoire, SVP!");
+    } else {
     this.auth.loginUser(email, password).pipe(
       switchMap(() => this.auth.loginUser(email, password)),
       tap(() => {
@@ -40,5 +44,6 @@ export class LoginComponent {
         return EMPTY;
       })
     ).subscribe();
+    }
   }
 }

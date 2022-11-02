@@ -35,7 +35,7 @@ button {
 }
 
 button:hover {
-  transform: scale3d(1.2, 1.2, 1.2);
+  transform: scale3d(1.1, 1.1, 1.1);
   box-shadow: 14px 14px 14px #FD2D01;
 }
 

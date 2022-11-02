@@ -25,18 +25,17 @@ input, button {
 
 button {
     display: flex;
-    
     width: 30%;
     margin: auto;
     justify-content: center;
     margin-top: 30px; 
     background: linear-gradient(grey, $tertiary-color); 
-    color: white;
-  
+    color: white; 
 }
 
 button:hover {
-    background: white; 
+    box-shadow: 3px 3px 10px grey;
+    opacity: 0.9;
     color: black;
     cursor: pointer;
 }
