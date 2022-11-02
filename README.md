@@ -1,5 +1,5 @@
 # Groupomania
-Élaboré septembre 2022 pour l'amélioration de la communication entre collaborateur en utilisant un réseau social d'entreprise
+Élaboré septembre 2022 pour l'amélioration de la communication entre les collaborateurs en utilisant un réseau social d'entreprise
 ## Front-end
 Framework utilisé Angular CLI: 14.1.2 
 
