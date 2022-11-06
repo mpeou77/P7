@@ -1,47 +1,47 @@
-$primary-color: #FD2D01;
+$primary-color: #fd2d01;
 $secondary-color: #ffd7d7;
-$tertiary-color: #4E5166;
+$tertiary-color: #4e5166;
 
 .control-buttons {
-    display: flex;
-    justify-content: space-between;
+  display: flex;
+  justify-content: space-between;
 }
 
 button {
-    background-color: $secondary-color;
-    color: black;;
-    border-radius: 7px;
-    margin: 15px; 
-    border-color: white;
-    box-shadow: 4px 4px 4px $primary-color;
-        cursor: pointer;
-      &:hover{
-        transform: scale3d(1.1,1.1,1.1);
-    }
+  background-color: $secondary-color;
+  color: black;
+  border-radius: 7px;
+  margin: 15px;
+  border-color: white;
+  box-shadow: 4px 4px 4px $primary-color;
+  cursor: pointer;
+  &:hover {
+    transform: scale3d(1.1, 1.1, 1.1);
+  }
 }
 
 @media screen and (max-width: 992px) {
-    .post-card {
-        margin-top: 100px;
-        width: 60%;
-        padding: 7px;
-    }
+  .post-card {
+    margin-top: 100px;
+    width: 60%;
+    padding: 7px;
+  }
 }
 
 @media screen and (max-width: 768px) {
-    .post-card {
-        width: 90%;
-        padding: 10px;
-    }
-    .control-buttons {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        width: 100%;
-    }
+  .post-card {
+    width: 90%;
+    padding: 10px;
+  }
+  .control-buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
 
-    button {
-        margin: 5px;
-        width: 40%;    
-    }
+  button {
+    margin: 5px;
+    width: 40%;
+  }
 }

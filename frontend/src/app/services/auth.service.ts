@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { BehaviorSubject, Observable, tap } from 'rxjs';
+import { BehaviorSubject, tap } from 'rxjs';
 import { Router } from '@angular/router';
 import { User } from '../models/user.model';
 
@@ -40,20 +40,9 @@ export class AuthService {
     return this.userId;
   }
 
-  getUsereById(usertId: string): Observable <User> {
-        
-    return this.http.get<User>(`http://localhost:3000/api/users/${this.userId}`)
-
-}
-
-  getAllUsers(): Observable <User[]> {
-    return this.http.get<User[]>('http://localhost:3000/api/signup');
-}
-
-
   loginUser(email: string, password: string) {
     return this.http
-      .post<{ userId: string; token: string; admin:any }>(
+      .post<{ userId: string; token: string; admin: any }>(
         'http://localhost:3000/api/login',
         { email: email, password: password }
       )

@@ -8,20 +8,27 @@ import { LoginComponent } from './auth/login/login.component';
 import { SinglePostComponent } from './single-post/single-post.component';
 
 const routes: Routes = [
-  
   { path: 'signup', component: SignupComponent },
   { path: 'login', component: LoginComponent },
-  { path: 'modifyPost/:id', component: NewPostComponent, canActivate: [AuthGuard] },
-  {path: 'posts/:id',component: SinglePostComponent, canActivate: [AuthGuard]},
+  {
+    path: 'modifyPost/:id',
+    component: NewPostComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'posts/:id',
+    component: SinglePostComponent,
+    canActivate: [AuthGuard],
+  },
   { path: 'postList', component: PostListComponent, canActivate: [AuthGuard] },
-  { path: 'create', component: NewPostComponent, canActivate: [AuthGuard] }, 
+  { path: 'create', component: NewPostComponent, canActivate: [AuthGuard] },
   { path: '', component: LoginComponent },
-  { path:'**', redirectTo: 'login'},
+  { path: '**', redirectTo: 'login' },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
-  providers: [AuthGuard]
+  providers: [AuthGuard],
 })
 export class AppRoutingModule {}

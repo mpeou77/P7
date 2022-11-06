@@ -4,7 +4,6 @@ const auth = require("../middleware/auth");
 const multer = require("../middleware/multer-config");
 const postCtrl = require("../controllers/post");
 
-
 router.delete("/:id", auth, postCtrl.deleteThing);
 router.get("/:id", auth, postCtrl.getOneThing);
 router.get("/", auth, postCtrl.getAllThings);

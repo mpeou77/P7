@@ -74,6 +74,7 @@ export class NewPostComponent implements OnInit {
     });
   }
 
+  // récupération d'un fichier image
   onFileSelect(event: Event) {
     const file = (event.target as HTMLInputElement).files![0];
     this.postForm.patchValue({
@@ -100,19 +101,19 @@ export class NewPostComponent implements OnInit {
         )
         .subscribe();
     } else if (this.mode === 'edit') {
-      console.log(this.post._id);
-      console.log('croyance');
-      this.posts.modifyPost(this.post._id,feeling, imageUrl).pipe(
-        tap(() => {
-          this.router.navigate(['/postList']);
+      this.posts
+        .modifyPost(this.post._id, feeling, imageUrl)
+        .pipe(
+          tap(() => {
+            this.router.navigate(['/postList']);
           }),
           catchError((error) => {
             this.errorMsg = error.message;
             return EMPTY;
-        })
-      ).subscribe();
+          })
+        )
+        .subscribe();
     }
-
   }
 
   onAllPost(): void {

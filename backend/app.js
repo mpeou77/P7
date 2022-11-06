@@ -8,10 +8,10 @@ const dotenv = require("dotenv");
 dotenv.config();
 
 mongoose
-  .connect(
-    process.env.DATABASE_CONNECTION,
-    { useNewUrlParser: true, useUnifiedTopology: true }
-  )
+  .connect(process.env.DATABASE_CONNECTION, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
   .then(() => console.log("Connexion à MongoDB réussie !"))
   .catch((error) => console.log(error));
 
@@ -30,7 +30,6 @@ app.use((req, res, next) => {
   );
   next();
 });
-//app.use(bodyParser.json());
 app.use("/api/posts", postRoutes);
 app.use("/api", userRoutes);
 app.use("/images", express.static(path.join(__dirname, "images")));

@@ -17,7 +17,6 @@ export class PostComponent implements OnInit {
   post$!: Observable<Post>;
   userId!: string;
 
-
   constructor(
     private postService: PostService,
     private authService: AuthService,
@@ -48,14 +47,13 @@ export class PostComponent implements OnInit {
   onLikes(postId: string): void {
     const userId = localStorage.getItem('userId');
     const userLike = this.post.usersLiked.includes(userId!);
-    console.log(postId);
-    console.log(userLike);
-      this.postService.postLikebyId(postId, !userLike).pipe(
+    this.postService
+      .postLikebyId(postId, !userLike)
+      .pipe(
         tap((post) => {
-          console.log(post);
-          console.log("blablablaa");
           this.post = post;
         })
-      ).subscribe();  
-    }   
+      )
+      .subscribe();
+  }
 }

@@ -1,5 +1,5 @@
 $bg-color: #ffffff;
-$text-color: #FD2D01;
+$text-color: #fd2d01;
 
 header {
   display: flex;
@@ -11,7 +11,6 @@ header {
 }
 
 nav {
-
   display: flex;
   align-items: flex-end;
   margin-right: 10px;
@@ -26,13 +25,11 @@ a {
   padding-left: 30px;
   color: black;
   &:hover {
-    
     text-decoration: underline;
-}
+  }
 }
 
 .active {
-  //color: $text-color;
   color: black;
   text-decoration: underline;
 }
@@ -42,7 +39,7 @@ h1 {
   justify-content: center;
 }
 
-@media  screen and (max-width: 768px) {
+@media screen and (max-width: 768px) {
   header {
     display: flex;
     flex-direction: column;
@@ -50,11 +47,10 @@ h1 {
     justify-content: center;
   }
 
-  nav{
+  nav {
     display: flex;
     margin: 0px auto;
     justify-content: center;
     align-items: center;
-
   }
 }

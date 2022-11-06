@@ -1,9 +1,7 @@
 <div class="form-card">
   <h2>Avec Bienveillance, Lâche-toi ! Exprime-toi !</h2>
   <nav>
-    <button  class="allPost" (click)="onAllPost()">
-      Retour aux Posts
-    </button>
+    <button class="allPost" (click)="onAllPost()">Retour aux Posts</button>
   </nav>
   <form
     [formGroup]="postForm"
@@ -19,7 +17,7 @@
       formControlName="feeling"
     ></textarea>
     <label for="imageUrl">En image, ça peut le faire aussi</label>
-    <input type="file" (change)="onFileSelect($event)" id="imageUrl">
+    <input type="file" (change)="onFileSelect($event)" id="imageUrl" />
     <button type="submit">Enregistrer</button>
   </form>
 </div>

@@ -1,7 +1,3 @@
-
-
-
-
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { map, Observable, shareReplay, switchMap } from 'rxjs';
@@ -16,10 +12,8 @@ import { PostService } from '../services/post.service';
   styleUrls: ['./post-list.component.scss'],
 })
 export class PostListComponent implements OnInit {
-  posts!:  Post[];
+  posts!: Post[];
   isAuth$!: Observable<boolean>;
-  
-  
 
   constructor(
     private postService: PostService,
@@ -29,14 +23,11 @@ export class PostListComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-     this.postService.getAllPosts().subscribe(
-      posts => this.posts = posts
-    );
+    this.postService.getAllPosts().subscribe((posts) => (this.posts = posts));
     this.isAuth$ = this.auth.isAuth$.pipe(shareReplay(1));
   }
 
   onAddNewPost(): void {
     this.router.navigateByUrl('/create');
   }
-
 }

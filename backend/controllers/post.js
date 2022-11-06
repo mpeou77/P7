@@ -27,11 +27,7 @@ exports.createThing = (req, res, next) => {
 
 // modifier un post
 exports.modifyThing = (req, res, next) => {
-  console.log("ooooooooooooooooooooo");
   if (req.file) {
-    console.log('zut');
-    console.log(Post);
-    
     Post.findById(req.params.id)
       .then((post) => {
         if (post.userId != req.auth.userId && !req.auth.admin) {
@@ -46,59 +42,48 @@ exports.modifyThing = (req, res, next) => {
               }`,
             }
           )
-          .then ((response) => {
-            res.status(200).json(response);
-          }).catch((error) => {
-            console.log(error);
-            res.status(400).json(error );
-          }); 
+            .then((response) => {
+              res.status(200).json(response);
+            })
+            .catch((error) => {
+              console.log(error);
+              res.status(400).json(error);
+            });
         }
       })
       .catch((error) => {
         res.status(400).json({ error });
       });
   } else {
-    console.log('test');
     Post.findById(req.params.id)
       .then((post) => {
-        console.log(req.auth.admin);
         if (post.userId != req.auth.userId && !req.auth.admin) {
           res.status(401).json({ message: "Non autorisé !" });
         } else {
-          console.log(req.body.feeling );
-          console.log(req.params.id );
           Post.updateOne({ _id: req.params.id }, { feeling: req.body.feeling })
-          .then ((response) => {
-            res.status(200).json(response);
-          }).catch((error) => {
-            console.log(error);
-            res.status(400).json(error );
-          });
-          
+            .then((response) => {
+              res.status(200).json(response);
+            })
+            .catch((error) => {
+              console.log(error);
+              res.status(400).json(error);
+            });
         }
       })
       .catch((error) => {
         res.status(400).json({ error });
       });
   }
-}
- 
-  
+};
 
 // effacer un post
 exports.deleteThing = (req, res, next) => {
   Post.findOne({ _id: req.params.id })
     .then((post) => {
-      console.log(post.userId);
-      console.log(req.params.id);
-      if (
-        post.userId === req.auth.userId ||
-        req.auth.admin
-      ) {
+      if (post.userId === req.auth.userId || req.auth.admin) {
         const filename = post.imageUrl.split("/images/")[1];
         fs.unlink(`images/${filename}`, () => {
-          Post
-            .deleteOne({ _id: req.params.id })
+          Post.deleteOne({ _id: req.params.id })
             .then(() => {
               res.status(200).json({ message: "Objet supprimé !" });
             })
@@ -129,58 +114,49 @@ exports.getAllThings = (req, res, next) => {
     .catch((error) => res.status(400).json({ error }));
 };
 
-
 // incréménter ou décrémenter les likes
 exports.DislikeOrLike = (req, res, next) => {
-  console.log(req.params.id);
   Post.findOne({ _id: req.params.id })
     .then((post) => {
       // cas où l'utilisateur aime le post, il incrémente les likes
-      console.log(req.body.likes);
-      console.log(post._id);
       let listeUsersLike = post.usersLiked;
-      if (req.body.likes ) {
-console.log(req.body.userId);
-console.log(post.usersLiked);
-        if (!post.usersLiked.includes(req.body.userId)){ 
-        console.log('tataattatattatata');
-        listeUsersLike.push(req.body.userId);
-        Post
-          .updateOne(
+      if (req.body.likes) {
+        if (!post.usersLiked.includes(req.body.userId)) {
+          listeUsersLike.push(req.body.userId);
+          Post.updateOne(
             { _id: req.params.id },
-            { likes: listeUsersLike.length ,  usersLiked: listeUsersLike }
+            { likes: listeUsersLike.length, usersLiked: listeUsersLike }
           )
-          .then(() =>{
-            Post.findOne({ _id: req.params.id })
-            .then((response) => res.status(201).json(response));
-          }) 
-          .catch((error) => res.status(400).json(error));
-          } else {
-            Post
-          .updateOne(
+            .then(() => {
+              Post.findOne({ _id: req.params.id }).then((response) =>
+                res.status(201).json(response)
+              );
+            })
+            .catch((error) => res.status(400).json(error));
+        } else {
+          Post.updateOne(
             { _id: req.params.id },
             { $inc: { likes: -1 }, $pull: { usersLiked: req.auth.userId } }
           )
-          .then(() =>{
-            Post.findOne({ _id: req.params.id })
-            .then((response) => res.status(201).json(response));
-          })
-          .catch((error) => res.status(400).json(error));
-          }
+            .then(() => {
+              Post.findOne({ _id: req.params.id }).then((response) =>
+                res.status(201).json(response)
+              );
+            })
+            .catch((error) => res.status(400).json(error));
+        }
       } else {
-        console.log('samedi');
-        Post
-          .updateOne(
-            { _id: req.params.id },
-            { $inc: { likes: -1 }, $pull: { usersLiked: req.auth.userId } }
-          )
-          .then(() =>{
-            Post.findOne({ _id: req.params.id })
-            .then((response) => res.status(201).json(response));
+        Post.updateOne(
+          { _id: req.params.id },
+          { $inc: { likes: -1 }, $pull: { usersLiked: req.auth.userId } }
+        )
+          .then(() => {
+            Post.findOne({ _id: req.params.id }).then((response) =>
+              res.status(201).json(response)
+            );
           })
           .catch((error) => res.status(400).json(error));
       }
-    
     })
     .catch((error) => {
       res.status(500).json({ error });

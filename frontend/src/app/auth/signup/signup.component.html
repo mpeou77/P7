@@ -1,12 +1,11 @@
-  <form [formGroup]="signupForm">
-    <label for="email">Mail</label>
-    <input type="email" id="email" formControlName="email">
-    <label for="password">Mot de passe</label>
-    <input type="password" id="password" formControlName="password">
-    <label for="Nom" >Nom</label>
-    <input type="text" formControlName="lastname" id="Nom"> 
-    <label for="Prenom">Prénom</label>
-    <input type="text" formControlName="firstname" id="Prenom"> 
-    <button type="submit" (click)="onSignup()">S'inscrire</button>
-  </form>
-
+<form [formGroup]="signupForm">
+  <label for="email">Mail</label>
+  <input type="email" id="email" formControlName="email" />
+  <label for="password">Mot de passe</label>
+  <input type="password" id="password" formControlName="password" />
+  <label for="Nom">Nom</label>
+  <input type="text" formControlName="lastname" id="Nom" />
+  <label for="Prenom">Prénom</label>
+  <input type="text" formControlName="firstname" id="Prenom" />
+  <button type="submit" (click)="onSignup()">S'inscrire</button>
+</form>

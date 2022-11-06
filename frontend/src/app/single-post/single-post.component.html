@@ -1,12 +1,12 @@
 <div class="post-card" *ngIf="post$ | async as post">
-  <h2>{{post.lastname | uppercase}} {{post.firstname}}</h2>
-  <p>Mis en ligne: le {{ post.createDate | date: 'medium'}}</p>
+  <h2>{{ post.lastname | uppercase }} {{ post.firstname }}</h2>
+  <p>Mis en ligne: le {{ post.createDate | date: "medium" }}</p>
 
   <p>{{ post.feeling }}</p>
   <div class="imagePost"><img [src]="post.imageUrl" alt="image-post" /></div>
   <div class="control-buttons">
-    <button  (click)="onBack()">RETOUR</button>
-    <button (click)="onModify()" >MODIFIER</button>
-    <button  (click)="onDelete()">SUPPRIMER</button>
+    <button (click)="onBack()">RETOUR</button>
+    <button (click)="onModify()">MODIFIER</button>
+    <button (click)="onDelete()">SUPPRIMER</button>
   </div>
 </div>
